@@ -31,8 +31,10 @@ export class MemStorage implements IStorage {
     const id = randomUUID();
     const user: User = { 
       ...insertUser, 
-      id, 
-      createdAt: new Date() 
+      id,
+      role: insertUser.role as 'student' | 'instructor' | 'administrator',
+      studentId: insertUser.studentId || null,
+      createdAt: new Date()
     };
     this.users.set(id, user);
     return user;

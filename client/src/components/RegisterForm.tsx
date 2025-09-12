@@ -165,21 +165,25 @@ export default function RegisterForm({
                 type={showPassword ? "text" : "password"}
                 placeholder="Create a password"
                 data-testid="input-password"
+                className="pr-10"
                 {...form.register("password")}
               />
               <Button
                 type="button"
                 variant="ghost"
-                size="icon"
-                className="absolute right-2 top-1/2 -translate-y-1/2 h-8 w-8"
+                size="sm"
+                className="absolute right-1 top-1/2 -translate-y-1/2 h-7 w-7 p-0"
                 onClick={() => setShowPassword(!showPassword)}
                 data-testid="button-toggle-password"
               >
                 {showPassword ? (
-                  <EyeOff className="h-4 w-4" />
+                  <EyeOff className="h-4 w-4 text-muted-foreground" />
                 ) : (
-                  <Eye className="h-4 w-4" />
+                  <Eye className="h-4 w-4 text-muted-foreground" />
                 )}
+                <span className="sr-only">
+                  {showPassword ? "Hide password" : "Show password"}
+                </span>
               </Button>
             </div>
             {form.formState.errors.password && (
@@ -197,21 +201,25 @@ export default function RegisterForm({
                 type={showConfirmPassword ? "text" : "password"}
                 placeholder="Confirm your password"
                 data-testid="input-confirm-password"
+                className="pr-10"
                 {...form.register("confirmPassword")}
               />
               <Button
                 type="button"
                 variant="ghost"
-                size="icon"
-                className="absolute right-2 top-1/2 -translate-y-1/2 h-8 w-8"
+                size="sm"
+                className="absolute right-1 top-1/2 -translate-y-1/2 h-7 w-7 p-0"
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                 data-testid="button-toggle-confirm-password"
               >
                 {showConfirmPassword ? (
-                  <EyeOff className="h-4 w-4" />
+                  <EyeOff className="h-4 w-4 text-muted-foreground" />
                 ) : (
-                  <Eye className="h-4 w-4" />
+                  <Eye className="h-4 w-4 text-muted-foreground" />
                 )}
+                <span className="sr-only">
+                  {showConfirmPassword ? "Hide password" : "Show password"}
+                </span>
               </Button>
             </div>
             {form.formState.errors.confirmPassword && (

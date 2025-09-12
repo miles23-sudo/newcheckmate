@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useLocation } from "wouter";
+import { ArrowLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import LoginHeader from "@/components/LoginHeader";
 import RoleSelector, { UserRole } from "@/components/RoleSelector";
 import LoginForm from "@/components/LoginForm";
@@ -67,13 +69,18 @@ export default function Login() {
         
         {viewMode === 'login' && (
           <div className="space-y-4">
-            <button
-              onClick={handleBack}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              data-testid="button-back-to-roles"
-            >
-              ← Back to role selection
-            </button>
+            <div className="flex items-center justify-between">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={handleBack}
+                className="text-muted-foreground hover:text-foreground p-2"
+                data-testid="button-back-to-roles"
+              >
+                <ArrowLeft className="h-4 w-4 mr-2" />
+                Back to role selection
+              </Button>
+            </div>
             <LoginForm
               selectedRole={selectedRole}
               onLogin={handleLogin}
@@ -85,13 +92,18 @@ export default function Login() {
         
         {viewMode === 'register' && (
           <div className="space-y-4">
-            <button
-              onClick={handleBack}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              data-testid="button-back-to-roles"
-            >
-              ← Back to role selection
-            </button>
+            <div className="flex items-center justify-between">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={handleBack}
+                className="text-muted-foreground hover:text-foreground p-2"
+                data-testid="button-back-to-roles"
+              >
+                <ArrowLeft className="h-4 w-4 mr-2" />
+                Back to role selection
+              </Button>
+            </div>
             <RegisterForm
               selectedRole={selectedRole}
               onRegister={handleRegister}
