@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { BookOpen, Users, FileText, Brain, Plus, User } from "lucide-react";
+import CourseManagement from "./CourseManagement";
 
 // Mock user data - will be replaced with actual authentication
 const mockInstructor = {
@@ -248,44 +249,7 @@ export default function InstructorDashboard() {
         <main className="flex-1 p-6">
           {selectedTab === 'overview' && renderOverview()}
           {selectedTab === 'courses' && (
-            <div className="space-y-4">
-              <div className="flex justify-between items-center">
-                <h2 className="text-2xl font-bold">My Courses</h2>
-                <Button data-testid="button-create-course-main">
-                  <Plus className="mr-2 h-4 w-4" />
-                  Create New Course
-                </Button>
-              </div>
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                {teachingCourses.map((course) => (
-                  <Card key={course.id} className="hover-elevate">
-                    <CardHeader>
-                      <CardTitle>{course.title}</CardTitle>
-                      <CardDescription>{course.code}</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="space-y-2">
-                        <div className="flex justify-between text-sm">
-                          <span>Students:</span>
-                          <span>{course.students}</span>
-                        </div>
-                        <div className="flex justify-between text-sm">
-                          <span>Assignments:</span>
-                          <span>{course.assignments}</span>
-                        </div>
-                        <div className="flex justify-between text-sm">
-                          <span>Pending Reviews:</span>
-                          <span className="text-orange-600">{course.pendingGrades}</span>
-                        </div>
-                        <Button className="w-full mt-4" size="sm">
-                          Manage Course
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
+            <CourseManagement />
           )}
           {selectedTab === 'assignments' && (
             <div className="space-y-4">
