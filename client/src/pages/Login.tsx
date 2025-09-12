@@ -30,9 +30,16 @@ export default function Login() {
     setTimeout(() => {
       setIsLoading(false);
       console.log('Login successful, redirecting to dashboard...');
-      // TODO: Redirect based on role
-      // setLocation(`/${data.role}/dashboard`);
-    }, 2000);
+      
+      // Navigate to appropriate dashboard based on role
+      if (data.role === 'student') {
+        setLocation('/student-dashboard');
+      } else if (data.role === 'instructor') {
+        setLocation('/instructor-dashboard');
+      } else if (data.role === 'administrator') {
+        setLocation('/admin-dashboard');
+      }
+    }, 1000);
   };
 
   const handleRegister = async (data: any) => {
