@@ -101,20 +101,20 @@ export default function LoginForm({
 
           <div className="space-y-2">
             <Label htmlFor="password">Password</Label>
-            <div className="relative">
+            <div className="grid grid-cols-[1fr_auto] items-center border border-input rounded-md bg-background focus-within:ring-1 focus-within:ring-ring">
               <Input
                 id="password"
                 type={showPassword ? "text" : "password"}
                 placeholder="Enter your password"
                 data-testid="input-password"
-                className="pr-10"
+                className="col-start-1 border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
                 {...form.register("password")}
               />
               <Button
                 type="button"
                 variant="ghost"
-                size="sm"
-                className="absolute right-2 top-1/2 -translate-y-1/2 h-7 w-7 p-0 flex items-center justify-center"
+                size="icon"
+                className="col-start-2 ml-2 mr-2"
                 onClick={() => setShowPassword(!showPassword)}
                 data-testid="button-toggle-password"
               >
