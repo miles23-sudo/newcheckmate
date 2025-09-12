@@ -37,7 +37,6 @@ export default function ThemeToggle() {
       size="icon"
       onClick={toggleTheme}
       data-testid="button-theme-toggle"
-      className="fixed top-4 right-4"
     >
       {isDark ? (
         <Sun className="h-5 w-5" />

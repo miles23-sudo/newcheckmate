@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { BookOpen, Clock, FileText, BarChart3, User } from "lucide-react";
+import ThemeToggle from "@/components/ThemeToggle";
 
 // Mock user data - will be replaced with actual authentication
 const mockStudent = {
@@ -188,7 +189,8 @@ export default function StudentDashboard() {
               </div>
             </div>
           </div>
-          <div className="ml-auto">
+          <div className="ml-auto flex items-center space-x-2">
+            <ThemeToggle />
             <Button variant="outline" data-testid="button-logout">
               Logout
             </Button>

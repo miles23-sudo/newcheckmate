@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Users, BookOpen, FileText, Settings, TrendingUp, Shield, User, Plus } from "lucide-react";
+import ThemeToggle from "@/components/ThemeToggle";
 
 // Mock user data - will be replaced with actual authentication
 const mockAdmin = {
@@ -206,6 +207,7 @@ export default function AdminDashboard() {
             </div>
           </div>
           <div className="ml-auto flex items-center space-x-2">
+            <ThemeToggle />
             <Button data-testid="button-admin-settings">
               <Settings className="mr-2 h-4 w-4" />
               Settings

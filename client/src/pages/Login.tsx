@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLocation } from "wouter";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ThemeToggle from "@/components/ThemeToggle";
 import LoginHeader from "@/components/LoginHeader";
 import RoleSelector, { UserRole } from "@/components/RoleSelector";
 import LoginForm from "@/components/LoginForm";
@@ -64,6 +65,9 @@ export default function Login() {
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
+      <div className="absolute top-4 right-4">
+        <ThemeToggle />
+      </div>
       <div className="w-full max-w-md">
         <LoginHeader />
         

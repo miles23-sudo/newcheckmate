@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { BookOpen, Users, FileText, Brain, Plus, User } from "lucide-react";
 import CourseManagement from "./CourseManagement";
+import ThemeToggle from "@/components/ThemeToggle";
 
 // Mock user data - will be replaced with actual authentication
 const mockInstructor = {
@@ -193,6 +194,7 @@ export default function InstructorDashboard() {
             </div>
           </div>
           <div className="ml-auto flex items-center space-x-2">
+            <ThemeToggle />
             <Button data-testid="button-create-course">
               <Plus className="mr-2 h-4 w-4" />
               New Course
