@@ -34,7 +34,7 @@ export default function Login() {
       
       // Navigate to appropriate dashboard based on role
       if (data.role === 'student') {
-        setLocation('/student-dashboard');
+        setLocation('/class/course1');
       } else if (data.role === 'instructor') {
         setLocation('/instructor-dashboard');
       } else if (data.role === 'administrator') {
