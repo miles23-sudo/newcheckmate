@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLocation } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -17,7 +18,19 @@ const mockStudent = {
 };
 
 export default function StudentDashboard() {
+  const [, setLocation] = useLocation();
   const [selectedTab, setSelectedTab] = useState<'overview' | 'courses' | 'assignments' | 'grades'>('overview');
+
+  // Sign out handler
+  const handleSignOut = () => {
+    // Clear any stored authentication data
+    localStorage.removeItem('user');
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('userRole');
+    
+    // Navigate back to login page
+    setLocation('/login');
+  };
 
   // Mock data queries - will be replaced with actual API calls
   const { data: enrolledCourses = [] } = useQuery({
@@ -191,7 +204,7 @@ export default function StudentDashboard() {
           </div>
           <div className="ml-auto flex items-center space-x-2">
             <ThemeToggle />
-            <Button variant="outline" data-testid="button-logout">
+            <Button variant="outline" data-testid="button-logout" onClick={handleSignOut}>
               Logout
             </Button>
           </div>

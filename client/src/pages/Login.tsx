@@ -6,6 +6,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 import LoginHeader from "@/components/LoginHeader";
 import RoleSelector, { UserRole } from "@/components/RoleSelector";
 import LoginForm from "@/components/LoginForm";
+import backgroundImage from "@/assets/3f40ad5d-bf31-41f2-a93b-94f0729fe062.png";
 import RegisterForm from "@/components/RegisterForm";
 
 type ViewMode = 'roleSelection' | 'login' | 'register';
@@ -64,22 +65,34 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center p-4">
-      <div className="absolute top-4 right-4">
-        <ThemeToggle />
-      </div>
-      <div className="w-full max-w-md">
-        <LoginHeader />
+    <div className="min-h-screen bg-background flex items-center justify-center p-4 relative">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
+        style={{
+          backgroundImage: `url(${backgroundImage})`
+        }}
+      />
+      {/* Content */}
+      <div className="relative z-10 w-full max-w-md">
+        <div className="absolute top-4 right-4 animate-in fade-in-0 slide-in-from-top-2 duration-500 delay-200">
+          <ThemeToggle />
+        </div>
+        <div className="animate-in fade-in-0 slide-in-from-top-4 duration-700">
+          <LoginHeader />
+        </div>
         
         {viewMode === 'roleSelection' && (
-          <RoleSelector
-            selectedRole={selectedRole}
-            onRoleSelect={handleRoleSelect}
-          />
+          <div className="animate-in fade-in-0 slide-in-from-bottom-4 duration-500">
+            <RoleSelector
+              selectedRole={selectedRole}
+              onRoleSelect={handleRoleSelect}
+            />
+          </div>
         )}
         
         {viewMode === 'login' && (
-          <div className="space-y-4">
+          <div className="space-y-4 animate-in fade-in-0 slide-in-from-right-4 duration-500">
             <div className="flex items-center justify-between">
               <Button
                 variant="ghost"
@@ -102,7 +115,7 @@ export default function Login() {
         )}
         
         {viewMode === 'register' && (
-          <div className="space-y-4">
+          <div className="space-y-4 animate-in fade-in-0 slide-in-from-left-4 duration-500">
             <div className="flex items-center justify-between">
               <Button
                 variant="ghost"

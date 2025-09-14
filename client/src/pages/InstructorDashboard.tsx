@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLocation } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -17,7 +18,19 @@ const mockInstructor = {
 };
 
 export default function InstructorDashboard() {
+  const [, setLocation] = useLocation();
   const [selectedTab, setSelectedTab] = useState<'overview' | 'courses' | 'assignments' | 'grading'>('overview');
+
+  // Sign out handler
+  const handleSignOut = () => {
+    // Clear any stored authentication data
+    localStorage.removeItem('user');
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('userRole');
+    
+    // Navigate back to login page
+    setLocation('/login');
+  };
 
   // Mock data queries - will be replaced with actual API calls
   const { data: teachingCourses = [] } = useQuery({
@@ -199,7 +212,7 @@ export default function InstructorDashboard() {
               <Plus className="mr-2 h-4 w-4" />
               New Course
             </Button>
-            <Button variant="outline" data-testid="button-logout">
+            <Button variant="outline" data-testid="button-logout" onClick={handleSignOut}>
               Logout
             </Button>
           </div>

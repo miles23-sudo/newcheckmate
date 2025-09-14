@@ -68,6 +68,17 @@ export default function ClassroomLayout({ children, courseId = "course1" }: Clas
 
   const unreadCount = mockNotifications.filter(n => !n.isRead).length;
 
+  // Sign out handler
+  const handleSignOut = () => {
+    // Clear any stored authentication data
+    localStorage.removeItem('user');
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('userRole');
+    
+    // Navigate back to login page
+    navigate('/login');
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Top Navigation Bar */}
@@ -137,14 +148,16 @@ export default function ClassroomLayout({ children, courseId = "course1" }: Clas
             {/* Notifications */}
             <Sheet open={isNotificationsOpen} onOpenChange={setIsNotificationsOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="sm" className="relative" data-testid="button-notifications">
-                  <Bell className="h-5 w-5" />
+                <div className="relative inline-block">
+                  <Button variant="ghost" size="sm" data-testid="button-notifications">
+                    <Bell className="h-5 w-5" />
+                  </Button>
                   {unreadCount > 0 && (
-                    <Badge variant="destructive" className="absolute -top-1 -right-1 h-5 w-5 p-0 text-xs">
+                    <span className="absolute -top-2 -right-2 h-5 w-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center font-medium z-10">
                       {unreadCount}
-                    </Badge>
+                    </span>
                   )}
-                </Button>
+                </div>
               </SheetTrigger>
               <SheetContent side="right" className="w-80">
                 <div className="space-y-4">
@@ -199,7 +212,13 @@ export default function ClassroomLayout({ children, courseId = "course1" }: Clas
                 <DropdownMenuItem data-testid="menu-item-profile">My Profile</DropdownMenuItem>
                 <DropdownMenuItem data-testid="menu-item-settings">Account Settings</DropdownMenuItem>
                 <Separator />
-                <DropdownMenuItem data-testid="menu-item-logout">Sign Out</DropdownMenuItem>
+                <DropdownMenuItem 
+                  data-testid="menu-item-logout" 
+                  onClick={handleSignOut}
+                  className="text-red-600 dark:text-red-400 focus:text-red-600 dark:focus:text-red-400"
+                >
+                  Sign Out
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
